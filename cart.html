@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="">
+  
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-title dropdown-toggle" type="button" id="usuario" data-bs-toggle="dropdown" aria-expanded="false">
+                
+              </button>
+              <ul class="dropdown-menu" style="background-color: black;" aria-labelledby="usuario">
+                <li><a class="dropdown-item cursor-active" id="cart" onclick="{cartItems()}">Carrito</a></li>
+                <li><a class="dropdown-item cursor-active" href="my-profile.html">Perfil</a></li>
+                <li><a class="dropdown-item cursor-active" id="logOut" onclick="{logOut()}">Salir</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section class="h-100 gradient-custom">
+      <div class="container">
+        <div class="row d-flex justify-content-center my-4">
+          <div class="col-md-8">
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h5 class="mb-1">Cart - items</h5>
+              </div>
+              <div id="siteItems">
+              </div>
+            </div>
+          
+          <hr />
+            <div class="d-block my-3" id ="radioBtns">
+              <h2> Tipo de envio</h2>
+              <div class="custom-control custom-radio" >
+                <input id="premiumRadio" name="publicationType" type="radio" class="custom-control-input" 
+                required="">
+                <label class="custom-control-label" for="goldradio">Premium 2 a 5 dias(12%)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="expressRadio" name="publicationType" type="radio" class="custom-control-input" required="">
+                <label class="custom-control-label" for="premiumradio">Express de 5 a 8 dias(7%)</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="standardRadio" name="publicationType" type="radio" class="custom-control-input" required="">
+                <label class="custom-control-label" for="standardradio">Estándar de 12 a 15 dias(5%)</label>
+              </div>
+            </div>
+
+        
+          <h2>
+            Direccion de envio
+          </h2>
+          <form action="#" method="get" class="row mt-4" id="form">
+          <div class="form-group">
+            <label for="exampleInputStreet" class="form-label mt-4">Calle</label>
+            <input type="adress" class="form-control" id="street" aria-describedby="streetHelp" placeholder="Escriba aqui su calle">
+            <div class="invalid-feedback">
+              Por favor, escriba su calle.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputHouseNumber" class="form-label mt-4">Numero</label>
+            <input type="adress" class="form-control" id="number" aria-describedby="numberHelp" placeholder="Numero de casa">
+            <div class="invalid-feedback">
+              Por favor, escriba el numero de puerta.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputCorner" class="form-label mt-4">Esquina</label>
+            <input type="adress" class="form-control" id="corner" aria-describedby="cornerHelp" placeholder="Escriba aqui su esquina">
+            <div class="invalid-feedback">
+              Por favor, escriba la esquina.
+            </div>
+          </div>
+          
+      
+        <h2 class="mt-1">
+        Costos
+        </h2>
+          <div class="list-group" id="costos">
+            <div class="list-group-item list-group-item-action ">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="row">
+                    <p class="fs2">Subtotal</p>
+                  </div>
+                  <div class="row">
+                    <p class="text-muted">Costo unitario por producto</p>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <h3 id="subTotal"></h3>
+                </div>   
+              </div>
+            </div>
+            <hr />
+            <div class="list-group-item list-group-item-action ">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="row">
+                    <p class="fs2">Costo de envio</p>
+                  </div>
+                  <div class="row">
+                  <p class="text-muted">Segun el tipo de envio</p>
+                </div>
+              </div>
+                <div class="col-sm-4">
+                  <h3 id="costo">
+
+                  </h3>
+                     
+                </div>
+              </div>
+            </div>
+          <hr>
+            <div class="list-group-item list-group-item-action ">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="row">
+                    <p class="fs2">Total ($)</p>
+                   </div>
+                  </div>
+                      <div class="col-sm-4">
+                        <h3 id="total">
+                        
+                        </h3>    
+                     </div>
+                    </div>
+                  </div>
+          </div>
+          <div class="mt-2">
+            <h2>
+              Formas de pago
+            </h2>
+          </div>
+            <div class="form-check">
+              <label for="modalCredit">Metodo de pago</label>
+              <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#modalTerminos"
+                id="btnTerminos" required>seleccionar</button>  
+                <div class="invalid-feedback">
+                  Debe seleccionar el metodo de pago
+                </div>               
+            </div>              
+            <div class="d-grid mt-1">
+              <button class="btn btn-lg btn-primary" type="submit" id="submit">Finalizar compra</button>
+              
+            </div>
+          
+       
+      
+          </form>
+          </div>
+        </div>
+<div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Forma de pago</h1>
+        <hr />
+        
+      </div>
+      <div class="modal-body">
+        <div>
+            <input type="radio" name="payment" id="credit">
+            <label for="">Tarjeta de Credito</label>
+            <hr />
+          <div class="row">
+            <div class="col-sm-6">
+              <input type="number" class="form-control" name="tarjet-number" id="tarjetNumber">
+              <div class="invalid-feedback">
+                Por favor, escriba el numero de su tarjeta de credito.
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <input type="number" class="form-control" name="security-code" id="securityCode">
+              <div class="invalid-feedback">
+                Por favor, escriba el codigo de seguridad de su tarjeta.
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-sm-6" >
+              <input type="number" class="form-control" name="expiration-date" id="expirationDate">
+              <div class="invalid-feedback">
+                Por favor, escriba la fecha de vencimiento.
+              </div>
+            </div>
+          </div>
+           <div class="card mb-3 mt-2 mb-lg-0">
+            <div class="card-body">
+              <p><strong>Aceptamos</strong></p>
+              <img class="me-2" width="45px"
+                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                alt="Visa" />
+              <img class="me-2" width="45px"
+                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                alt="American Express" />
+              <img class="me-2" width="45px"
+                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                alt="Mastercard" />
+              
+          </div>
+          </div> 
+          <div class="mt-3">
+
+            <input type="radio" name="payment" id="transfer">
+            <label for="">Tranferencia bancaria</label>
+            
+          </div>
+
+
+
+          <hr />
+          <label for="">Numero de cuenta</label>
+          <div class="col-sm-6">
+          <input type="number" class="form-control" name="account" id="account">
+          <div class="invalid-feedback">
+            Por favor, escriba su numero de cuenta.
+          </div>
+        </div>
+        </div>
+      </div>
+    <div>
+    </div>
+    <hr />
+    <button type="button" class="btn btn-lg btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+</div>
+      
+    </div>
+  </div>
+</div>
+                
+          
+                
+<div class="alert alert-dismissible alert-success d-none" id="itsOK">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Su compra se ha realizado con exito</strong>
+</div>
+                
+    </section>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+        2022</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
+</html>
